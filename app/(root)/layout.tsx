@@ -6,6 +6,7 @@ export default function RootLayout({
   return (
     <main>
         {/* SIDEBAR */}
+        <div>sidebar</div>
         { children }
     </main>
   );
