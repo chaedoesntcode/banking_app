@@ -10,8 +10,8 @@ const ibmPlexSerif = IBM_Plex_Serif({
 })
 
 export const metadata: Metadata = {
-  title: "Well",
-  description: "Well is a modern banking platform for everyone.",
+  title: "well",
+  description: "well is a modern banking platform for everyone.",
 //   icons: {
 //     icon: ''
 //   }
