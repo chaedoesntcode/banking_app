@@ -251,11 +251,11 @@
 
   /* Mobile nav */
   .mobilenav-sheet {
-    @apply flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto;
+    @apply flex h-fit mt-4 flex-col justify-between overflow-y-auto;
   }
 
   .mobilenav-sheet_close {
-    @apply flex gap-3 items-center p-4 rounded-lg w-full max-w-60;
+    @apply flex flex-col gap-1 items-center justify-center text-center p-2 rounded-lg;
   }
 
   /* PlaidLink */
