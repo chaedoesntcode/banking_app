@@ -2,6 +2,7 @@
 import { type ClassValue, clsx } from "clsx";
 import qs from "query-string";
 import { twMerge } from "tailwind-merge";
+import { z } from "zod"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -193,3 +194,17 @@ export const getTransactionStatus = (date: Date) => {
 
   return date > twoDaysAgo ? "Processing" : "Success";
 };
+
+export const authFormSchema = (type: string) => z.object({
+  firstName: type === 'sign-in' ? z.string().optional() : z.string({message: "First name is required"}).min(3, {message: "Must contain at least 3 characters"}).max(50, { message: "Must contain at most 50 characters" }),
+  lastName: type === 'sign-in' ? z.string().optional() : z.string({message: "Last name is required"}).min(3, {message: "Must contain at least 3 characters"}).max(50, { message: "Must contain at most 50 characters" }),
+  address1: type === 'sign-in' ? z.string().optional() : z.string({message: "Enter a valid address"}).min(3, {message: "Must contain at least 3 characters"}).max(50, {message: "Must contain at most 50 character(s)"}),
+  city: type === 'sign-in' ? z.string().optional() : z.string({message: "Enter a valid city"}).max(50, {message: "Must contain at most 50 characters"}),
+  state: type === 'sign-in' ? z.string().optional() : z.string({message: "Enter a valid state"}).min(2, {message: "Must contain at least 2 characters"}).max(2, {message: "Must contain at most 2 characters"}),
+  dateOfBirth: type === 'sign-in' ? z.string().optional() : z.string({message: "Date of birth is required"}).min(8, {message: "Must contain at least 8 characters"}).max(8, {message: "Must contain at most 8 characters"}),
+  postalCode: type === 'sign-in' ? z.string().optional() : z.string({message: "Postal code is required"}).min(5, {message: "Must contain at least 5 characters"}).max(10, {message: "Must contain at most 10 characters"}),
+  ssn: type === 'sign-in' ? z.string().optional() : z.string({message: "SSN is required"}).min(8, {message: "Must contain at least 8 character(s)"}).max(8, {message: "Must contain at most 8 characters"}),
+
+  email: z.string().email({message: "Enter a valid email"}),
+  password: z.string().min(8, {message: "Password must contain at least 8 characters"}),
+})
