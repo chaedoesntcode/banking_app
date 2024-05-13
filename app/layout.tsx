@@ -12,9 +12,9 @@ const ibmPlexSerif = IBM_Plex_Serif({
 export const metadata: Metadata = {
   title: "well",
   description: "well is a modern banking platform for everyone.",
-//   icons: {
-//     icon: ''
-//   }
+  icons: {
+    icon: '/icons/logo.svg'
+  }
 };
 
 export default function RootLayout({
